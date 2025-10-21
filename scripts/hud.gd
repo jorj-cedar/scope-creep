@@ -59,6 +59,11 @@ func update_size(max_scope):
 	$ProgressBar.size.x = max_scope * 20
 	$ProgressBar.max_value = max_scope
 
+func update_size_label(max_scope):
+	var game_size
+	game_size = max_scope * 10
+	$ProgressBar/SizeLabel.text = "Size: " + str(game_size) + "%"
+
 func _on_start_button_pressed() -> void:
 	$StartButton.hide()
 	start_game.emit()

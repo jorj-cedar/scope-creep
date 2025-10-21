@@ -7,7 +7,6 @@ extends Node
 var score
 var total_pickups: int = 0
 var max_scope: int = 10
-var death_scope: int = 15
 
 var green = Color(0,1,0,1)
 var red = Color(1,0,0,1)
@@ -44,6 +43,10 @@ func new_game():
 	score = 30
 	total_pickups = 0
 	max_scope = 10
+	
+	$Player.speed = 400
+	$Player.scale.x = 1
+	$Player.scale.y = 1
 	
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
@@ -138,15 +141,17 @@ func _on_player_pickup() -> void:
 
 func _on_player_embiggen() -> void:
 	max_scope += 1
-	$Player.speed -= 75
+	if $Player.speed <= 0:
+		game_over()
+	else:
+		$Player.speed -= 50
+	
 	$Player.scale.x += 0.25
 	$Player.scale.y += 0.25
 	$HUD.update_size(max_scope)
+	$HUD.update_size_label(max_scope)
 	show_msg($Player.position,"SCOPE INCREASED!",red)
-	if max_scope >= death_scope - 2:
-		$HUD/ProgressBar/AlmostDead.visible = true
+	if max_scope == 14:
 		$HUD/ProgressBar.flash(true)
 		
-	if max_scope == death_scope:
-		game_over()
 		
