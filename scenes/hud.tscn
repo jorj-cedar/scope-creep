@@ -14,21 +14,6 @@ events = [SubResource("InputEventAction_64ctp")]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_8sq4i"]
 
-[sub_resource type="Animation" id="Animation_5ysmq"]
-resource_name = "progress_flash"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:tint_under")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.16666666, 1.0333338),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.2911872, 0.3394864, 0.36947763, 1), Color(0.8150196, 3.5857408e-06, 7.70092e-07, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_6fi6k"]
 length = 0.001
 tracks/0/type = "value"
@@ -38,10 +23,26 @@ tracks/0/path = NodePath(".:tint_under")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.2911872, 0.3394864, 0.36947763, 1)]
+"values": [Color(0.2911872, 0.3394864, 0.36947763, 1), Color(0.94684523, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5ysmq"]
+resource_name = "progress_flash"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:tint_under")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.2911872, 0.3394864, 0.36947763, 1), Color(0.8150196, 3.5857408e-06, 7.70092e-07, 1), Color(0.2901961, 0.34117648, 0.36862746, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uo2fv"]
