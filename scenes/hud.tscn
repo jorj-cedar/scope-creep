@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5jcni6ttls2w"]
+[gd_scene load_steps=11 format=3 uid="uid://c5jcni6ttls2w"]
 
 [ext_resource type="FontFile" uid="uid://cfw10xmyoyr4d" path="res://fonts/Xolonium-Regular.ttf" id="1_37p78"]
 [ext_resource type="Script" uid="uid://vqd3ytbwbgdn" path="res://scripts/hud.gd" id="1_64ctp"]
@@ -13,6 +13,42 @@ events = [SubResource("InputEventAction_64ctp")]
 [sub_resource type="CanvasTexture" id="CanvasTexture_64ctp"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_8sq4i"]
+
+[sub_resource type="Animation" id="Animation_5ysmq"]
+resource_name = "progress_flash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:tint_under")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.16666666, 1.0333338),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.2911872, 0.3394864, 0.36947763, 1), Color(0.8150196, 3.5857408e-06, 7.70092e-07, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6fi6k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:tint_under")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.2911872, 0.3394864, 0.36947763, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uo2fv"]
+_data = {
+&"RESET": SubResource("Animation_6fi6k"),
+&"progress_flash": SubResource("Animation_5ysmq")
+}
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_64ctp")
@@ -118,6 +154,11 @@ theme_override_colors/font_color = Color(0.91227055, 4.7168137e-06, 6.738305e-07
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 25
 text = "SCOPE DANGEROUSLY BIG!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ProgressBar"]
+libraries = {
+&"": SubResource("AnimationLibrary_uo2fv")
+}
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
