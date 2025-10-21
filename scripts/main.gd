@@ -139,6 +139,8 @@ func _on_player_pickup() -> void:
 func _on_player_embiggen() -> void:
 	max_scope += 1
 	$Player.speed -= 75
+	$Player.scale.x += 0.25
+	$Player.scale.y += 0.25
 	$HUD.update_size(max_scope)
 	show_msg($Player.position,"SCOPE INCREASED!",red)
 	if max_scope >= death_scope - 2:
