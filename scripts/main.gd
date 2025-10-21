@@ -73,7 +73,7 @@ func _on_mob_timer_timeout() -> void:
 	direction += randf_range(-PI / 4, PI / 4)
 	mob.rotation = direction
 	
-	var velocity = Vector2(randf_range(300.0, 500.0,), 0.0)
+	var velocity = Vector2(randf_range(500.0, 700.0,), 0.0)
 	
 	mob.linear_velocity = velocity.rotated(direction)
 	
@@ -141,7 +141,7 @@ func _on_player_pickup() -> void:
 
 func _on_player_embiggen() -> void:
 	max_scope += 1
-	if $Player.speed <= 0:
+	if $Player.speed <= 50:
 		game_over()
 	else:
 		$Player.speed -= 50
