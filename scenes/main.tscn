@@ -29,11 +29,11 @@ grow_vertical = 2
 color = Color(0.15900984, 0.14016199, 0.49493188, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-offset_left = -272.0
-offset_top = -40.0
-offset_right = 1320.0
-offset_bottom = 1022.0
+offset_left = 580.0
+offset_top = -84.999985
+offset_right = 2172.0
+offset_bottom = 977.0
+rotation = 1.129279
 scale = Vector2(0.7200019, 0.7200019)
 texture = ExtResource("3_7mycd")
 
