@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctbfecshimna4"]
+
+[ext_resource type="Script" uid="uid://b6wdnvcsymlnm" path="res://pickup.gd" id="1_iqk3k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pu7wf"]
+radius = 43.416588
+
+[node name="pickup" type="RigidBody2D" groups=["pickups"]]
+collision_layer = 2
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_iqk3k")
+metadata/_edit_group_ = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-23, -46.999996)
+scale = Vector2(0.335073, 0.4082295)
+color = Color(0.23137255, 1, 0, 1)
+polygon = PackedVector2Array(49.709297, 83.64705, 75.558136, 33.45881, 101.406975, 83.64705, 157.08139, 96.658806, 119.30232, 120.82352, 127.25581, 165.43527, 75.558136, 144.98822, 27.837204, 165.43527, 37.779068, 126.39999, 0, 96.658806)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pu7wf")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -6.0
+offset_top = -13.0
+offset_right = 15.0
+offset_bottom = 11.0
+text = "%"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
