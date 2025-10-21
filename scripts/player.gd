@@ -18,11 +18,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var velocity = Vector2.ZERO
 	
-	velocity.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	velocity.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
+		velocity *= speed
 		$AnimatedSprite2D.play()
 	else: 
 		$AnimatedSprite2D.stop()
@@ -30,15 +29,14 @@ func _process(delta: float) -> void:
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
 	
-	if velocity.x != 0:
+	if abs(velocity.x) > abs(velocity.y):
 		$AnimatedSprite2D.animation = "walk"
 		$AnimatedSprite2D.flip_v = false
 		$AnimatedSprite2D.flip_h = velocity.x < 0
-	elif velocity.y != 0:
+	elif abs(velocity.y) > abs(velocity.x):
 		$AnimatedSprite2D.animation = "up"
 		$AnimatedSprite2D.flip_v = velocity.y > 0
-		
-		
+
 
 
 func _on_body_entered(body) -> void:
