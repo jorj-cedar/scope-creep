@@ -31,6 +31,8 @@ func game_over() -> void:
 	$MobTimer.stop()
 	$PickupTimer.stop()
 	$HUD.show_game_over()
+	$Player.hide()
+	$Player/CollisionShape2D.set_deferred("disabled", true)
 	
 func victory():
 	$ScoreTimer.stop()
@@ -49,6 +51,7 @@ func new_game():
 	$Player.scale.y = 1
 	
 	$Player.start($StartPosition.position)
+	$Player/CollisionShape2D.set_deferred("disabled", false)
 	$StartTimer.start()
 	$PickupTimer.start()
 	$HUD.update_score(score)
@@ -87,12 +90,12 @@ func _on_mob_timer_timeout() -> void:
 	#add_child(scope_msg)
 
 func show_msg(player_position, message, msg_color):
-	var show_msg = game_msg_scene.instantiate()
-	show_msg.text = message
-	show_msg.position = player_position
-	show_msg.set("theme_override_colors/font_color",msg_color)
+	var game_msg = game_msg_scene.instantiate()
+	game_msg.text = message
+	game_msg.position = player_position
+	game_msg.set("theme_override_colors/font_color",msg_color)
 	
-	add_child(show_msg)
+	add_child(game_msg)
 
 
 func _on_score_timer_timeout() -> void:

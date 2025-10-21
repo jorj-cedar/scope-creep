@@ -67,5 +67,3 @@ func _on_pickup_finder_body_entered(body: Node2D) -> void:
 	pickup.emit()
 	
 	body.queue_free()
-	
-	 # Replace with function body.
