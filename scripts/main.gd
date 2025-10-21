@@ -73,7 +73,7 @@ func _on_mob_timer_timeout() -> void:
 	direction += randf_range(-PI / 4, PI / 4)
 	mob.rotation = direction
 	
-	var velocity = Vector2(randf_range(100.0, 200.0,), 0.0)
+	var velocity = Vector2(randf_range(100.0, 300.0,), 0.0)
 	
 	mob.linear_velocity = velocity.rotated(direction)
 	
@@ -132,6 +132,7 @@ func _on_pickup_timer_timeout() -> void:
 
 func _on_player_pickup() -> void:
 	total_pickups += 1
+	$Player.speed += 25
 	$HUD.update_pickups(total_pickups)
 	show_msg($Player.position,"COMPLETION UP!",green)
 	if total_pickups == max_scope:
