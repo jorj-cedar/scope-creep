@@ -52,6 +52,7 @@ func new_game():
 	$HUD.update_pickups(total_pickups)
 	$HUD.update_size(max_scope)
 	$HUD.show_message("Reach your deadline!")
+	$HUD/ProgressBar.flash(false)
 	$HUD/ProgressBar/AlmostDead.visible = false
 	
 	get_tree().call_group("mobs", "queue_free")
@@ -137,12 +138,13 @@ func _on_player_pickup() -> void:
 
 func _on_player_embiggen() -> void:
 	max_scope += 1
+	$Player.speed -= 75
 	$HUD.update_size(max_scope)
 	show_msg($Player.position,"SCOPE INCREASED!",red)
 	if max_scope >= death_scope - 2:
 		$HUD/ProgressBar/AlmostDead.visible = true
-		$HUD/ProgressBar.flash()
+		$HUD/ProgressBar.flash(true)
 		
-	elif max_scope == death_scope:
+	if max_scope == death_scope:
 		game_over()
 		

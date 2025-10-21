@@ -9,8 +9,11 @@ var original_color : Color
 func _ready() -> void:
 	pass # Replace with function body.
 
-func flash():
-	$AnimationPlayer.play("progress_flash")
+func flash(onoff):
+	if onoff == true:
+		$AnimationPlayer.play("progress_flash")
+	elif onoff == false:
+		$AnimationPlayer.stop()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
