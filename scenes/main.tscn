@@ -50,7 +50,6 @@ wait_time = 2.0
 one_shot = true
 
 [node name="PickupTimer" type="Timer" parent="."]
-wait_time = 0.5
 
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(960, 704)
