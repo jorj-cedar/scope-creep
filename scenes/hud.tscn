@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://c5jcni6ttls2w"]
 
 [ext_resource type="FontFile" uid="uid://cfw10xmyoyr4d" path="res://fonts/Xolonium-Regular.ttf" id="1_37p78"]
-[ext_resource type="Script" uid="uid://vqd3ytbwbgdn" path="res://hud.gd" id="1_64ctp"]
-[ext_resource type="Script" uid="uid://b2rbek3jdm0iv" path="res://progress_bar.gd" id="3_8sq4i"]
+[ext_resource type="Script" uid="uid://vqd3ytbwbgdn" path="res://scripts/hud.gd" id="1_64ctp"]
+[ext_resource type="Script" uid="uid://b2rbek3jdm0iv" path="res://scripts/progress_bar.gd" id="3_8sq4i"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_64ctp"]
 action = &"start_game"
@@ -85,7 +85,6 @@ wait_time = 2.0
 one_shot = true
 
 [node name="ProgressBar" type="TextureProgressBar" parent="."]
-anchors_preset = -1
 offset_left = 913.0
 offset_top = 47.0
 offset_right = 1113.0

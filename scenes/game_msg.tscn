@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c822f0tnpb0xl"]
 
-[ext_resource type="Script" uid="uid://ceggiui61klrn" path="res://game_msg.gd" id="1_0flhl"]
+[ext_resource type="Script" uid="uid://ceggiui61klrn" path="res://scripts/game_msg.gd" id="1_0flhl"]
 
 [node name="GameMsg" type="Label"]
 theme_override_colors/font_color = Color(1, 0.24489844, 0.19101408, 1)

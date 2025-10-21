@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://cjisokx4aygca"]
 
-[ext_resource type="Script" uid="uid://deqeoryt62s56" path="res://main.gd" id="1_h2yge"]
-[ext_resource type="PackedScene" uid="uid://cykah5xtb2f0g" path="res://mob.tscn" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://deqeoryt62s56" path="res://scripts/main.gd" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://cykah5xtb2f0g" path="res://scenes/mob.tscn" id="2_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://dpb2t4nhed12w" path="res://art/developer.png" id="3_7mycd"]
-[ext_resource type="PackedScene" uid="uid://ctbfecshimna4" path="res://pickup.tscn" id="3_272bh"]
-[ext_resource type="PackedScene" uid="uid://cvxogfyuke111" path="res://player.tscn" id="3_lquwl"]
-[ext_resource type="PackedScene" uid="uid://c5jcni6ttls2w" path="res://hud.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://c822f0tnpb0xl" path="res://game_msg.tscn" id="4_272bh"]
+[ext_resource type="PackedScene" uid="uid://ctbfecshimna4" path="res://scenes/pickup.tscn" id="3_272bh"]
+[ext_resource type="PackedScene" uid="uid://cvxogfyuke111" path="res://scenes/player.tscn" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://c5jcni6ttls2w" path="res://scenes/hud.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://c822f0tnpb0xl" path="res://scenes/game_msg.tscn" id="4_272bh"]
 
 [sub_resource type="Curve2D" id="Curve2D_7mycd"]
 _data = {
