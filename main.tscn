@@ -26,7 +26,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.15900984, 0.14016199, 0.49493188, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
