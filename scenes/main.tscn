@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjisokx4aygca"]
+[gd_scene load_steps=13 format=3 uid="uid://cjisokx4aygca"]
 
 [ext_resource type="Script" uid="uid://deqeoryt62s56" path="res://scripts/main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cykah5xtb2f0g" path="res://scenes/mob.tscn" id="2_1bvp3"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://cvxogfyuke111" path="res://scenes/player.tscn" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c5jcni6ttls2w" path="res://scenes/hud.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c822f0tnpb0xl" path="res://scenes/game_msg.tscn" id="4_272bh"]
+[ext_resource type="AudioStream" uid="uid://bdta8rvbg17m2" path="res://sound/Pickupsound.mp3" id="8_choun"]
+[ext_resource type="AudioStream" uid="uid://blxqih8q0u3ap" path="res://sound/Development Hell.mp3" id="8_tipki"]
+[ext_resource type="AudioStream" uid="uid://snjakbi2qtas" path="res://sound/damage1.mp3" id="10_ya4ey"]
+[ext_resource type="AudioStream" uid="uid://d1mjqgm0w02kv" path="res://sound/MenuMusic.mp3" id="11_ya4ey"]
 
 [sub_resource type="Curve2D" id="Curve2D_7mycd"]
 _data = {
@@ -61,6 +65,20 @@ curve = SubResource("Curve2D_7mycd")
 rotation = -0.0005213764
 
 [node name="HUD" parent="." instance=ExtResource("4_1bvp3")]
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+
+[node name="PickUpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_choun")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_tipki")
+
+[node name="HitEnemySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ya4ey")
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ya4ey")
 
 [connection signal="embiggen" from="Player" to="." method="_on_player_embiggen"]
 [connection signal="hit" from="Player" to="." method="game_over"]

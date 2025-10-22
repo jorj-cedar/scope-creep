@@ -11,15 +11,25 @@ var max_scope: int = 10
 var green = Color(0,1,0,1)
 var red = Color(1,0,0,1)
 	
-
-	
+@onready var pickup_sounds =[
+		preload("res://sound/PickingUp1.mp3"),
+		preload("res://sound/PickingUp2.mp3"),
+		preload("res://sound/PickingUp3.mp3")
+]
+@onready var hitenemy_sounds =[
+	preload("res://sound/damage1.mp3"),
+	preload("res://sound/Damage2.mp3")
+]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
-	
+	randomize()
+	$MenuMusic.play()
 	
 
+	
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -27,6 +37,9 @@ func _process(delta: float) -> void:
 
 
 func game_over() -> void:
+	$MenuMusic.play()
+	$GameMusic.stop()
+	$DeathSound.play()
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$PickupTimer.stop()
@@ -42,6 +55,8 @@ func victory():
 	get_tree().call_group("mobs", "queue_free")
 
 func new_game():
+	$MenuMusic.stop()
+	$GameMusic.play()
 	score = 30
 	total_pickups = 0
 	max_scope = 10
@@ -134,6 +149,11 @@ func _on_pickup_timer_timeout() -> void:
 
 
 func _on_player_pickup() -> void:
+	
+	var random_sound = pickup_sounds.pick_random()
+	$PickUpSound.stream = random_sound
+	$PickUpSound.play()
+
 	total_pickups += 1
 	$Player.speed += 25
 	$HUD.update_pickups(total_pickups)
@@ -144,6 +164,9 @@ func _on_player_pickup() -> void:
 
 
 func _on_player_embiggen() -> void:
+	var random_sound = hitenemy_sounds.pick_random()
+	$HitEnemySound.stream = random_sound
+	$HitEnemySound.play()
 	max_scope += 1
 	if $Player.speed <= 75:
 		game_over()
