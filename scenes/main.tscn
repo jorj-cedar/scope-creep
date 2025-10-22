@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://cvxogfyuke111" path="res://scenes/player.tscn" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c5jcni6ttls2w" path="res://scenes/hud.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c822f0tnpb0xl" path="res://scenes/game_msg.tscn" id="4_272bh"]
-[ext_resource type="AudioStream" uid="uid://bdta8rvbg17m2" path="res://Music/Pickupsound.mp3" id="8_choun"]
-[ext_resource type="AudioStream" uid="uid://blxqih8q0u3ap" path="res://Music/Development Hell.mp3" id="8_tipki"]
-[ext_resource type="AudioStream" uid="uid://snjakbi2qtas" path="res://Music/damage1.mp3" id="10_ya4ey"]
+[ext_resource type="AudioStream" uid="uid://bdta8rvbg17m2" path="res://sound/Pickupsound.mp3" id="8_choun"]
+[ext_resource type="AudioStream" uid="uid://blxqih8q0u3ap" path="res://sound/Development Hell.mp3" id="8_tipki"]
+[ext_resource type="AudioStream" uid="uid://snjakbi2qtas" path="res://sound/damage1.mp3" id="10_ya4ey"]
 
 [sub_resource type="Curve2D" id="Curve2D_7mycd"]
 _data = {

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://blxqih8q0u3ap"
+path="res://.godot/imported/Development Hell.mp3-96545bc8b48f17803be52337bccc04ed.mp3str"
+
+[deps]
+
+source_file="res://sound/Development Hell.mp3"
+dest_files=["res://.godot/imported/Development Hell.mp3-96545bc8b48f17803be52337bccc04ed.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
