@@ -27,6 +27,8 @@ func _process(delta: float) -> void:
 
 
 func game_over() -> void:
+	$Music.stop()
+	$DeathSound.play()
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$PickupTimer.stop()
@@ -42,6 +44,7 @@ func victory():
 	get_tree().call_group("mobs", "queue_free")
 
 func new_game():
+	$Music.play()
 	score = 30
 	total_pickups = 0
 	max_scope = 10
@@ -134,6 +137,7 @@ func _on_pickup_timer_timeout() -> void:
 
 
 func _on_player_pickup() -> void:
+	$PickUpSound.play()
 	total_pickups += 1
 	$Player.speed += 25
 	$HUD.update_pickups(total_pickups)
@@ -144,6 +148,7 @@ func _on_player_pickup() -> void:
 
 
 func _on_player_embiggen() -> void:
+	$HitEnemySound.play()
 	max_scope += 1
 	if $Player.speed <= 50:
 		game_over()
