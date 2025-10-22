@@ -36,7 +36,8 @@ func show_message(text):
 	#tween.tween_property($ProgressBar, "tint_under", Color.RED, fade_duration)
 	#tween.tween_property($ProgressBar, "tint_under", Color.BLACK, fade_duration)
 
-
+func update_scope_list(scope_list):
+	$PickupHistory.text += "\n" + scope_list[len(scope_list)-1]
 
 func show_game_over():
 	show_message("Your game got too big!")

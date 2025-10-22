@@ -80,6 +80,7 @@ stream = ExtResource("10_ya4ey")
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_ya4ey")
 
+[connection signal="add_scope" from="Player" to="." method="_on_player_add_scope"]
 [connection signal="embiggen" from="Player" to="." method="_on_player_embiggen"]
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="pickup" from="Player" to="." method="_on_player_pickup"]

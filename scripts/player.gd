@@ -6,6 +6,7 @@ var screen_size
 signal hit
 signal embiggen
 signal pickup
+signal add_scope
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -43,7 +44,10 @@ func _on_body_entered(body) -> void:
 	#hide()
 	#hit.emit()
 	
+	
+	
 	embiggen.emit()
+	add_scope.emit(body.get_node("ScopeTypeLabel").text)
 	body.queue_free()
 	#$CollisionShape2D.set_deferred("disabled", true)
 

@@ -8,6 +8,9 @@ var score
 var total_pickups: int = 0
 var max_scope: int = 10
 
+var scope_list = []
+
+
 var green = Color(0,1,0,1)
 var red = Color(1,0,0,1)
 	
@@ -182,3 +185,9 @@ func _on_player_embiggen() -> void:
 		$HUD/ProgressBar.flash(true)
 		
 		
+
+
+func _on_player_add_scope(scope_name) -> void:
+	scope_list.append(scope_name)
+	$HUD.update_scope_list(scope_list)
+	
