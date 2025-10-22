@@ -1,8 +1,21 @@
 [gd_scene load_steps=11 format=3 uid="uid://c5jcni6ttls2w"]
 
 [ext_resource type="FontFile" uid="uid://cfw10xmyoyr4d" path="res://fonts/Xolonium-Regular.ttf" id="1_37p78"]
-[ext_resource type="Script" uid="uid://vqd3ytbwbgdn" path="res://scripts/hud.gd" id="1_64ctp"]
 [ext_resource type="Script" uid="uid://b2rbek3jdm0iv" path="res://scripts/progress_bar.gd" id="3_8sq4i"]
+
+[sub_resource type="GDScript" id="GDScript_oo0fn"]
+script/source = "extends CanvasLayer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [sub_resource type="InputEventAction" id="InputEventAction_64ctp"]
 action = &"start_game"
@@ -52,7 +65,7 @@ _data = {
 }
 
 [node name="HUD" type="CanvasLayer"]
-script = ExtResource("1_64ctp")
+script = SubResource("GDScript_oo0fn")
 
 [node name="ScoreLabel" type="Label" parent="."]
 anchors_preset = 1
@@ -174,21 +187,21 @@ grow_horizontal = 0
 theme_override_constants/outline_size = 6
 text = "SIZE: 100%"
 
-[node name="PickupHistory" type="Label" parent="."]
-offset_left = 919.0
-offset_top = 232.0
-offset_right = 982.0
-offset_bottom = 255.0
-text = "histroyy"
-
-[node name="ReportBox" type="RichTextLabel" parent="PickupHistory"]
-layout_mode = 0
-offset_left = -34.0
-offset_top = 70.0
-offset_right = 172.0
-offset_bottom = 228.0
+[node name="PickupHistory" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -302.5
+offset_top = -274.0
+offset_right = 316.0
+offset_bottom = -125.0
+grow_horizontal = 2
+grow_vertical = 2
 bbcode_enabled = true
-text = "adfsdfgdfgddfg"
+text = "game report message"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

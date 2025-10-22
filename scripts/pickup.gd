@@ -16,8 +16,8 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_body_entered(body: Node) -> void:
-	hide()
-	
-	pickup_collected.emit()
-	$CollisionShape2D.set_deferred("disabled", true) 
+#func _on_body_entered(body: Node) -> void:
+	#hide()
+	#
+	#pickup_collected.emit()
+	#$CollisionShape2D.set_deferred("disabled", true) 
