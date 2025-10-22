@@ -145,7 +145,7 @@ func _on_player_pickup() -> void:
 
 func _on_player_embiggen() -> void:
 	max_scope += 1
-	if $Player.speed <= 50:
+	if $Player.speed <= 75:
 		game_over()
 	else:
 		$Player.speed -= 50

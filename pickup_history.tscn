@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b3icaqonqyv4r"]
+
+[node name="pickup_history" type="Label"]
+offset_right = 208.0
+offset_bottom = 23.0
+text = "In the end, your game had:"
