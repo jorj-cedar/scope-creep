@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 
 func game_over() -> void:
 	$MenuMusic.play()
-	$Music.stop()
+	$GameMusic.stop()
 	$DeathSound.play()
 	$ScoreTimer.stop()
 	$MobTimer.stop()
@@ -56,7 +56,7 @@ func victory():
 
 func new_game():
 	$MenuMusic.stop()
-	$Music.play()
+	$GameMusic.play()
 	score = 30
 	total_pickups = 0
 	max_scope = 10
