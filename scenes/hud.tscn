@@ -1,21 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://c5jcni6ttls2w"]
 
+[ext_resource type="Script" uid="uid://vqd3ytbwbgdn" path="res://scripts/hud.gd" id="1_5ysmq"]
 [ext_resource type="FontFile" uid="uid://cfw10xmyoyr4d" path="res://fonts/Xolonium-Regular.ttf" id="1_37p78"]
 [ext_resource type="Script" uid="uid://b2rbek3jdm0iv" path="res://scripts/progress_bar.gd" id="3_8sq4i"]
-
-[sub_resource type="GDScript" id="GDScript_oo0fn"]
-script/source = "extends CanvasLayer
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
 
 [sub_resource type="InputEventAction" id="InputEventAction_64ctp"]
 action = &"start_game"
@@ -65,7 +52,7 @@ _data = {
 }
 
 [node name="HUD" type="CanvasLayer"]
-script = SubResource("GDScript_oo0fn")
+script = ExtResource("1_5ysmq")
 
 [node name="ScoreLabel" type="Label" parent="."]
 anchors_preset = 1
