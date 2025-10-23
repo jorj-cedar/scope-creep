@@ -135,18 +135,12 @@ func _on_start_timer_timeout() -> void:
 func _on_pickup_timer_timeout() -> void:
 	var pickup = pickup_scene.instantiate()
 	
-	var pickup_spawn_location = $MobPath/MobSpawnLocation
-	pickup_spawn_location.progress_ratio = randf()
-	pickup.position = pickup_spawn_location.position
+	var screen_size = get_viewport().size
 	
-	var direction = pickup_spawn_location.rotation + PI / 2
+	pickup.position = Vector2(screen_size.x * randf(), screen_size.y * randf())
+
+	pickup.rotation = randf() * TAU
 	
-	direction += randf_range(-PI / 4, PI / 4)
-	pickup.rotation = direction
-	
-	var velocity = Vector2(randf_range(500.0, 700.0,), 0.0)
-	
-	pickup.linear_velocity = velocity.rotated(direction)
 	
 	add_child(pickup)
 

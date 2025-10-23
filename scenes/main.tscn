@@ -79,6 +79,7 @@ stream = ExtResource("10_ya4ey")
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_ya4ey")
+volume_db = -80.0
 
 [connection signal="add_scope" from="Player" to="." method="_on_player_add_scope"]
 [connection signal="embiggen" from="Player" to="." method="_on_player_embiggen"]

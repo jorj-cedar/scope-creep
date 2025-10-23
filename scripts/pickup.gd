@@ -6,7 +6,7 @@ signal pickup_collected
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
@@ -21,3 +21,12 @@ func _process(delta: float) -> void:
 	#
 	#pickup_collected.emit()
 	#$CollisionShape2D.set_deferred("disabled", true) 
+
+
+func _on_despawn_timer_timeout() -> void:
+	$AnimationPlayer.play("flash")
+	$FlashTimer.start()
+
+
+func _on_flash_timer_timeout() -> void:
+	queue_free()
