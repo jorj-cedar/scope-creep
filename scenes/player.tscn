@@ -1,13 +1,40 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvxogfyuke111"]
+[gd_scene load_steps=12 format=3 uid="uid://cvxogfyuke111"]
 
 [ext_resource type="Script" uid="uid://c6axl2gt3r1mi" path="res://scripts/player.gd" id="1_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://jfru31d1riq7" path="res://art/playerGrey_walk1.png" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://bvy2xd31blso7" path="res://art/playerGrey_walk2.png" id="2_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://bfwon3hjuemqu" path="res://art/folder_empty.png" id="2_smehm"]
 [ext_resource type="Texture2D" uid="uid://caqvwg40fffpt" path="res://art/playerGrey_up1.png" id="2_sweqy"]
 [ext_resource type="Texture2D" uid="uid://b1j3a8a4lpm51" path="res://art/playerGrey_up2.png" id="3_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://bmjqyyy1aa0qy" path="res://art/folder_full.png" id="3_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://drryqwr47cnvd" path="res://art/folder_some.png" id="4_y4r1p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hqtel"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_smehm")
+}],
+"loop": true,
+"name": &"folder_empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ur7pv")
+}],
+"loop": true,
+"name": &"folder_full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_y4r1p")
+}],
+"loop": true,
+"name": &"folder_some",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_sweqy")
@@ -31,33 +58,32 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sweqy"]
-radius = 27.0
-height = 68.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smehm"]
+size = Vector2(78.5, 55.5)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2hs0m"]
-radius = 27.0
-height = 68.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ur7pv"]
+size = Vector2(78, 58)
 
 [node name="Player" type="Area2D"]
 position = Vector2(240, 353)
 script = ExtResource("1_i3pqv")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.25857142, 0.25333333)
 sprite_frames = SubResource("SpriteFrames_hqtel")
-animation = &"up"
+animation = &"folder_some"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_sweqy")
+position = Vector2(-1.25, 2.25)
+shape = SubResource("RectangleShape2D_smehm")
 
 [node name="PickupFinder" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupFinder"]
-shape = SubResource("CapsuleShape2D_2hs0m")
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_ur7pv")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="PickupFinder" to="." method="_on_pickup_finder_body_entered"]

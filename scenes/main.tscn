@@ -1,16 +1,19 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjisokx4aygca"]
+[gd_scene load_steps=16 format=3 uid="uid://cjisokx4aygca"]
 
 [ext_resource type="Script" uid="uid://deqeoryt62s56" path="res://scripts/main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cykah5xtb2f0g" path="res://scenes/mob.tscn" id="2_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://dpb2t4nhed12w" path="res://art/developer.png" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://ctbfecshimna4" path="res://scenes/pickup.tscn" id="3_272bh"]
 [ext_resource type="PackedScene" uid="uid://cvxogfyuke111" path="res://scenes/player.tscn" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c5jcni6ttls2w" path="res://scenes/hud.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c822f0tnpb0xl" path="res://scenes/game_msg.tscn" id="4_272bh"]
+[ext_resource type="PackedScene" uid="uid://8qvi7tqqb48s" path="res://scenes/goodmob.tscn" id="5_eb6dy"]
+[ext_resource type="Texture2D" uid="uid://csjcyrfysoup8" path="res://art/office.jpg" id="6_a8y0u"]
 [ext_resource type="AudioStream" uid="uid://bdta8rvbg17m2" path="res://sound/Pickupsound.mp3" id="8_choun"]
 [ext_resource type="AudioStream" uid="uid://blxqih8q0u3ap" path="res://sound/Development Hell.mp3" id="8_tipki"]
 [ext_resource type="AudioStream" uid="uid://snjakbi2qtas" path="res://sound/damage1.mp3" id="10_ya4ey"]
-[ext_resource type="AudioStream" uid="uid://d1mjqgm0w02kv" path="res://sound/MenuMusic.mp3" id="11_ya4ey"]
+[ext_resource type="AudioStream" uid="uid://ijuwhcvty164" path="res://sound/scopecreepmenumusic.mp3" id="12_a8y0u"]
+[ext_resource type="AudioStream" uid="uid://cj22ai3pvvw5l" path="res://sound/positivepickup3.mp3" id="13_trceg"]
+[ext_resource type="AudioStream" uid="uid://c2t2jkjh00buq" path="res://sound/start.mp3" id="14_a8y0u"]
 
 [sub_resource type="Curve2D" id="Curve2D_7mycd"]
 _data = {
@@ -23,6 +26,7 @@ script = ExtResource("1_h2yge")
 mob_scene = ExtResource("2_1bvp3")
 pickup_scene = ExtResource("3_272bh")
 game_msg_scene = ExtResource("4_272bh")
+goodmob_scene = ExtResource("5_eb6dy")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -30,22 +34,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.15900984, 0.14016199, 0.49493188, 1)
+color = Color(0.37413925, 0.37413928, 0.37413922, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-offset_left = -272.0
-offset_top = -40.0
-offset_right = 1320.0
-offset_bottom = 1022.0
+offset_left = -10.0
+offset_right = 2659.4375
+offset_bottom = 1518.0516
 scale = Vector2(0.7200019, 0.7200019)
-texture = ExtResource("3_7mycd")
+texture = ExtResource("6_a8y0u")
 
 [node name="Player" parent="." instance=ExtResource("3_lquwl")]
 position = Vector2(960, 704)
 
 [node name="MobTimer" type="Timer" parent="."]
-wait_time = 0.202
+wait_time = 0.3
 
 [node name="ScoreTimer" type="Timer" parent="."]
 
@@ -54,6 +56,9 @@ wait_time = 2.0
 one_shot = true
 
 [node name="PickupTimer" type="Timer" parent="."]
+wait_time = 0.403
+
+[node name="GoodTimer" type="Timer" parent="."]
 
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(960, 704)
@@ -78,15 +83,22 @@ stream = ExtResource("8_tipki")
 stream = ExtResource("10_ya4ey")
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_ya4ey")
-volume_db = -80.0
+stream = ExtResource("12_a8y0u")
+parameters/looping = true
+
+[node name="GoodMobSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_trceg")
+
+[node name="StartSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_a8y0u")
 
 [connection signal="add_scope" from="Player" to="." method="_on_player_add_scope"]
 [connection signal="embiggen" from="Player" to="." method="_on_player_embiggen"]
-[connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="pickup" from="Player" to="." method="_on_player_pickup"]
+[connection signal="shrink" from="Player" to="." method="_on_player_shrink"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="PickupTimer" to="." method="_on_pickup_timer_timeout"]
+[connection signal="timeout" from="GoodTimer" to="." method="_on_good_timer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]

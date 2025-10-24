@@ -1,9 +1,5 @@
 extends TextureProgressBar
 
-@export var flash_interval = 0.5 # Seconds
-
-var is_flashing = false
-var original_color : Color
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
