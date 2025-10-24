@@ -116,6 +116,7 @@ func new_game():
 	$Player.scale.y = 1
 	
 	$Player.start($StartPosition.position)
+	$Player.animation = "folder_empty"
 	$Player/CollisionShape2D.set_deferred("disabled", false)
 	$StartTimer.start()
 	$PickupTimer.start()
